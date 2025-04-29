@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoSeguro Bolivia - Protección para tu vehículo</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #005f73;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: #e9c46a;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #0a9396;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/500') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e9c46a;
+            color: #333;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #f4a261;
+            transform: translateY(-3px);
+        }
+        
+        /* Servicios */
+        .services {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: #005f73;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e9c46a;
+        }
+        
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .service-card {
+            flex-basis: calc(33.33% - 20px);
+            margin-bottom: 30px;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            background-color: #e9c46a;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #005f73;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #005f73;
+        }
+        
+        /* Por qué elegirnos */
+        .why-us {
+            padding: 60px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            flex-basis: 50%;
+            display: flex;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .feature-icon {
+            background-color: #005f73;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 10px;
+            color: #005f73;
+        }
+        
+        /* Testimonios */
+        .testimonials {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .testimonial-card {
+            flex-basis: calc(33.33% - 20px);
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .testimonial-author h4 {
+            margin-bottom: 5px;
+            color: #005f73;
+        }
+        
+        .testimonial-author span {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-stars {
+            color: #e9c46a;
+            margin-bottom: 10px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 95, 115, 0.9), rgba(0, 95, 115, 0.9)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-column {
+            flex-basis: 23%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #e9c46a;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: #e9c46a;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #555;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #e9c46a;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        /* Bolivia Map Badge */
+        .bolivia-badge {
+            position: relative;
+            display: inline-block;
+            padding: 8px 16px 8px 45px;
+            background-color: #00535e;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .bolivia-flag {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, #ce1126 33%, #fcd116 33%, #fcd116 66%, #078930 66%);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .service-card, .testimonial-card {
+                flex-basis: calc(50% - 20px);
+            }
+            
+            .footer-column {
+                flex-basis: 48%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card, .testimonial-card {
+                flex-basis: 100%;
+            }
+            
+            .feature {
+                flex-basis: 100%;
+            }
+            
+            .footer-column {
+                flex-basis: 100%;
+            }
+            
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div style="font-size: 24px;">🚗</div>
+                <h1>Auto<span>Seguro</span> Bolivia</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#coberturas">Coberturas</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Protección Total para tu Vehículo en Bolivia</h2>
+                <p>Las mejores coberturas para tu auto con las tarifas más competitivas del mercado boliviano.</p>
+                <a href="#contacto" class="btn">Cotiza Ahora</a>
+                <div class="bolivia-badge">
+                    <div class="bolivia-flag"></div>
+                    Seguros 100% Bolivianos
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+            </div>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Seguro SOAT</h3>
+                    <p>Cumple con el requisito legal obligatorio para circular por las carreteras bolivianas con nuestro SOAT accesible y de rápida emisión.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚘</div>
+                    <h3>Seguro a Todo Riesgo</h3>
+                    <p>Cobertura completa para tu vehículo ante accidentes, robo, eventos naturales y daños a terceros en todo el territorio boliviano.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Asistencia en Ruta</h3>
+                    <p>Servicio de auxilio mecánico, grúa, cambio de llanta y asistencia 24/7 en las principales ciudades y rutas de Bolivia.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Seguro para Flotas</h3>
+                    <p>Soluciones corporativas para empresas con múltiples vehículos a tarifas preferenciales y gestión centralizada.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏍️</div>
+                    <h3>Seguro para Motos</h3>
+                    <p>Coberturas especiales para motocicletas adaptadas al mercado boliviano y con precios accesibles.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Planes Flexibles</h3>
+                    <p>Opciones de pago fraccionado, descuentos por buen conductor y beneficios adicionales para clientes recurrentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por qué elegirnos -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por qué elegirnos?</h2>
+            </div>
+            <div class="features-container">
+                <div class="feature">
+                    <div class="feature-icon">⏱️</div>
+                    <div class="feature-content">
+                        <h3>Atención Rápida</h3>
+                        <p>Respondemos a siniestros en menos de 2 horas en las principales ciudades de Bolivia: La Paz, Santa Cruz, Cochabamba, Sucre y más.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💵</div>
+                    <div class="feature-content">
+                        <h3>Precios Competitivos</h3>
+                        <p>Tarifas adaptadas al mercado boliviano con opciones para todos los presupuestos y necesidades.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👨‍💼</div>
+                    <div class="feature-content">
+                        <h3>Asesoría Personalizada</h3>
+                        <p>Nuestros asesores te ayudarán a encontrar el seguro ideal para tu vehículo y situación personal.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-content">
+                        <h3>App Móvil</h3>
+                        <p>Gestiona tu póliza, reporta siniestros y solicita asistencia desde nuestra aplicación exclusiva para Bolivia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="/api/placeholder/60/60" alt="Cliente">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Carlos Mendoza</h4>
+                            <span>La Paz</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Tuve un accidente en la carretera a Oruro y la asistencia llegó en menos de una hora. El proceso de reclamo fue muy sencillo y me pagaron sin complicaciones."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="/api/placeholder/60/60" alt="Cliente">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>María Flores</h4>
+                            <span>Santa Cruz</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Comparé varias aseguradoras y AutoSeguro me ofreció la mejor tarifa para mi Toyota. El servicio al cliente es excelente y siempre responden mis consultas."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="/api/placeholder/60/60" alt="Cliente">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Jorge Vega</h4>
+                            <span>Cochabamba</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Mi auto sufrió daños por granizo y pensé que sería complicado el reclamo, pero AutoSeguro cubrió todos los daños y el trámite fue rápido. Recomendado!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>¡Protege tu vehículo hoy mismo!</h2>
+            <p>Nuestros asesores están listos para ofrecerte la mejor cobertura adaptada a tus necesidades y al mercado boliviano.</p>
+            <a href="#" class="btn">Cotiza Gratis</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>AutoSeguro Bolivia</h3>
+                    <p>Ofrecemos las mejores soluciones de seguros para vehículos en todo el territorio boliviano desde 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><span>f</span></a>
+                        <a href="#"><span>in</span></a>
+                        <a href="#"><span>ig</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Útiles</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Sucursales</h3>
+                    <ul>
+                        <li>La Paz: Av. 16 de Julio #1234</li>
+                        <li>Santa Cruz: Av. Monseñor Rivero #567</li>
+                        <li>Cochabamba: Av. América #890</li>
+                        <li>Sucre: Calle Bolívar #432</li>
+                        <li>Tarija: Calle La Madrid #765</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contáctanos</h3>
+                    <ul>
+                        <li>📞 Línea gratuita: 800-123456</li>
+                        <li>📱 WhatsApp: +591 70123456</li>
+                        <li>✉️ Email: info@autosegurobolivia.com</li>
+                        <li>⏰ Lun-Vie: 8:30 - 18:30</li>
+                        <li>⏰ Sábados: 9:00 - 13:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AutoSeguro Bolivia. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
